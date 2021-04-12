@@ -22,6 +22,10 @@
       "tags": [],
       "implicitDependencies": ["apartment-hunter"]
     },
-    "ui-components": { "tags": [] }
+    "ui-components": { "tags": [] },
+    "ui-components-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ui-components"]
+    }
   }
 }

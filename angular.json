@@ -167,6 +167,63 @@
             "jestConfig": "libs/ui/components/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/ui/components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/ui-components",
+            "config": {
+              "configFolder": "libs/ui/components/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "ui-components-e2e": {
+      "root": "apps/ui-components-e2e",
+      "sourceRoot": "apps/ui-components-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ui-components-e2e/cypress.json",
+            "tsConfig": "apps/ui-components-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ui-components:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "ui-components:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ui-components-e2e/**/*.{js,ts}"]
+          }
         }
       }
     }

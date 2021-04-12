@@ -8,15 +8,28 @@
         "plugin:@nrwl/nx/angular",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
-      "parserOptions": { "project": ["libs/ui/components/tsconfig.*?.json"] },
+      "parserOptions": {
+        "project": [
+          "libs/ui/components/tsconfig.*?.json",
+          "libs/ui/components/.storybook/tsconfig.json"
+        ]
+      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "ngMonorepo", "style": "camelCase" }
+          {
+            "type": "attribute",
+            "prefix": "ngMonorepo",
+            "style": "camelCase"
+          }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "ng-monorepo", "style": "kebab-case" }
+          {
+            "type": "element",
+            "prefix": "ng-monorepo",
+            "style": "kebab-case"
+          }
         ]
       }
     },
