@@ -12,9 +12,17 @@
   "npmScope": "ng-monorepo",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "NTc0OTZiOGMtYmY1Mi00ZGY4LWJlMDgtMmQ2M2M0ODZlNGZmfHJlYWQtd3JpdGU=",
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
       }
     }
   },
@@ -24,7 +32,9 @@
     },
     "apartment-hunter-e2e": {
       "tags": [],
-      "implicitDependencies": ["apartment-hunter"]
+      "implicitDependencies": [
+        "apartment-hunter"
+      ]
     }
   }
 }
