@@ -150,7 +150,6 @@
       "projectType": "library",
       "root": "libs/ui/components",
       "sourceRoot": "libs/ui/components/src",
-      "prefix": "ng-monorepo",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
