@@ -1,25 +1,15 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "ng-monorepo",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "NTc0OTZiOGMtYmY1Mi00ZGY4LWJlMDgtMmQ2M2M0ODZlNGZmfHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true
@@ -27,14 +17,11 @@
     }
   },
   "projects": {
-    "apartment-hunter": {
-      "tags": []
-    },
+    "apartment-hunter": { "tags": [] },
     "apartment-hunter-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "apartment-hunter"
-      ]
-    }
+      "implicitDependencies": ["apartment-hunter"]
+    },
+    "ui-components": { "tags": [] }
   }
 }
