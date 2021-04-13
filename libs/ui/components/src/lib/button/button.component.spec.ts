@@ -1,5 +1,5 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
-import { ButtonColor, ButtonComponent } from './button.component'
+import { ButtonColor, ButtonComponent, Type } from './button.component'
 import { ButtonModule } from './button.module'
 
 describe('ButtonComponent', () => {
@@ -11,8 +11,14 @@ describe('ButtonComponent', () => {
   })
 
   it('should create', () => {
-    spectator = createComponent()
-    expect(spectator.component).toBeTruthy()
+    spectator = createComponent({
+      props: {
+        text: 'Foo',
+        type: Type.Submit
+      }
+    })
+    expect(spectator.query('.mat-button-wrapper').innerHTML.trim()).toBe('Foo')
+    expect(spectator.query('button').getAttribute('type')).toBe(Type.Submit)
   })
 
   it('should have primary color', () => {
@@ -45,9 +51,9 @@ describe('ButtonComponent', () => {
   it('should have disabled mode', () => {
     spectator = createComponent({
       props: {
-       disabled: true
+        disabled: true
       }
     })
-    expect(spectator.query('button').classList.contains('mat-button-disabled')).toBeTruthy()
+    expect(spectator.query('button').getAttribute('disabled')).toBe('true')
   })
 })
