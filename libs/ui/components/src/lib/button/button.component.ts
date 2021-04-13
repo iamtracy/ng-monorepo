@@ -3,22 +3,27 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
 export enum ButtonColor {
   Accent = 'accent',
   Primary = 'primary',
-  Warn = 'warn'
+  Warn = 'warn',
 }
 
 export enum Type {
   Button = 'button',
-  Submit = 'submit'
+  Submit = 'submit',
 }
 
 @Component({
   selector: 'ui-button',
   template: `
-    <button mat-raised-button [disabled]="disabled" [type]="type" [color]="color">
-      {{text}}
+    <button
+      mat-raised-button
+      [disabled]="disabled"
+      [type]="type"
+      [color]="color"
+    >
+      {{ text }}
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input() color: ButtonColor = ButtonColor.Primary

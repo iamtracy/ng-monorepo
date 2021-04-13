@@ -1,34 +1,37 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { DialogComponent } from './dialog.component'
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog'
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog'
 import { ButtonModule } from '../button/button.module'
 
-
-
 @NgModule({
-  declarations: [
-    DialogComponent
-  ],
+  declarations: [DialogComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ButtonModule
+    ButtonModule,
   ],
-  exports: [
-    DialogComponent
-  ],
+  exports: [DialogComponent],
   providers: [
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true, maxWidth: '60px' } },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { hasBackdrop: true, maxWidth: '60px' },
+    },
     {
       provide: MatDialogRef,
-      useValue: {}
-    }, {
+      useValue: {},
+    },
+    {
       provide: MAT_DIALOG_DATA,
-      useValue: {}
-    }
-  ]
+      useValue: {},
+    },
+  ],
 })
-export class DialogModule { }
+export class DialogModule {}

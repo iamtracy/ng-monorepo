@@ -1,5 +1,4 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
-
 import { CardComponent } from './card.component'
 import { CardModule } from './card.module'
 
@@ -8,7 +7,7 @@ describe('CardComponent', () => {
   const createComponent = createComponentFactory({
     component: CardComponent,
     imports: [CardModule],
-    shallow: true
+    shallow: true,
   })
 
   it('should create', () => {
@@ -16,7 +15,7 @@ describe('CardComponent', () => {
       props: {
         title: 'Foo',
         subtitle: 'Biz',
-        content: 'Baz'
+        content: 'Baz',
       },
     })
     expect(spectator.query('mat-card-title').innerHTML.trim()).toBe('Foo')

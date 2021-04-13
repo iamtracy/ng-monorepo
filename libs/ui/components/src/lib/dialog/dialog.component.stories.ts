@@ -1,46 +1,29 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { DialogModule } from './dialog.module';
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
+import { DialogModule } from './dialog.module'
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog'
 import { ButtonModule } from './../button/button.module'
-import { DialogComponent, DialogOnClose } from './dialog.component';
-import { ConfirmDialogService } from './dialog.service';
+import { DialogOnClose } from './dialog.component'
+import { ConfirmDialogService } from './dialog.service'
 
 export default {
-  title: 'Dialog'
+  title: 'Dialog',
 }
 
-export const primary = () => ({
-  moduleMetadata: {
-    imports: [MatDialogModule, DialogModule, ButtonModule],
-    providers: [
-      { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true, maxWidth: '1200px' } },
-      {
-        provide: MatDialogRef,
-        useValue: {}
-      }, {
-        provide: MAT_DIALOG_DATA,
-        useValue: {
-          title: 'Activated charcoal YOLO distillery',
-          message: `
-            Cardigan thundercats umami chia unicorn kale chips craft beer raclette selfies.
-            Fashion axe mumblecore vape umami, squid edison bulb authentic kickstarter single-origin coffee.
-          `,
-
-        }
-      }
-    ]
-  },
-  component: DialogComponent
-})
-
 @Component({
-  selector: 'ui-dialog-demo',
-  template: ` <ui-button (click)="handleClick()" text="Open Confirm Dialog"></ui-button>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'ui-dialog-test',
+  template: `<ui-button
+    (click)="handleClick()"
+    text="Open Confirm Dialog"
+  ></ui-button>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-class ConfirmComponent {
-
+class ConfirmTestComponent {
   constructor(private dialogService: ConfirmDialogService) {}
 
   handleClick() {
@@ -56,28 +39,39 @@ class ConfirmComponent {
       `,
     })
 
-    this.dialogService.confirmed().subscribe((value: DialogOnClose | undefined) => {
-      value === DialogOnClose.Confirmed
-      ? console.log('confirmed', value)
-      : console.log('cancelled', value)
-    })
+    this.dialogService
+      .confirmed()
+      .subscribe((value: DialogOnClose | undefined) => {
+        value === DialogOnClose.Confirmed
+          ? console.log('confirmed', value)
+          : console.log('cancelled', value)
+      })
   }
 }
 
-export const confirm = () => ({
+export const Default = () => ({
   moduleMetadata: {
-    imports: [MatDialogModule, BrowserAnimationsModule, DialogModule, ButtonModule],
+    imports: [
+      MatDialogModule,
+      BrowserAnimationsModule,
+      DialogModule,
+      ButtonModule,
+    ],
     providers: [
       ConfirmDialogService,
-      { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true, maxWidth: '1200px' } },
+      {
+        provide: MAT_DIALOG_DEFAULT_OPTIONS,
+        useValue: { hasBackdrop: true, maxWidth: '1200px' },
+      },
       {
         provide: MatDialogRef,
-        useValue: {}
-      }, {
+        useValue: {},
+      },
+      {
         provide: MAT_DIALOG_DATA,
-        useValue: {}
-      }
-    ]
+        useValue: {},
+      },
+    ],
   },
-  component: ConfirmComponent
+  component: ConfirmTestComponent,
 })

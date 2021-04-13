@@ -1,19 +1,18 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
-
+import { Spectator, createComponentFactory } from '@ngneat/spectator'
 import { DialogModule } from './dialog.module'
-import { DialogComponent } from './dialog.component';
+import { DialogComponent } from './dialog.component'
 
 describe('DialogComponent', () => {
-  let spectator: Spectator<DialogComponent>;
+  let spectator: Spectator<DialogComponent>
   const createComponent = createComponentFactory({
     component: DialogComponent,
     imports: [DialogModule],
-    shallow: true
+    shallow: true,
   })
 
   it('should create', () => {
-    spectator = createComponent();
+    spectator = createComponent()
 
-    expect(spectator.component).toBeTruthy();
-  });
-});
+    expect(spectator.component).toBeTruthy()
+  })
+})
