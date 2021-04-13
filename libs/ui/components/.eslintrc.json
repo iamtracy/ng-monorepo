@@ -27,7 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ng-monorepo",
+            "prefix": "ui",
             "style": "kebab-case"
           }
         ]

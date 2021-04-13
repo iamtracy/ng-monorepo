@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { ButtonTheme } from '@ng-monorepo/ui/components'
+import { Component } from '@angular/core'
 
 @Component({
-  selector: 'ng-monorepo-root',
+  selector: 'ui-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'apartment-hunter';
+  buttonTheme = ButtonTheme
+
+  handleAdd() {
+    console.log('add')
+  }
+
+  handleDelete() {
+    console.log('delete')
+  }
 }

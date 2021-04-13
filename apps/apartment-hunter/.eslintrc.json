@@ -18,7 +18,7 @@
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "ng-monorepo", "style": "kebab-case" }
+          { "type": "element", "prefix": "ui", "style": "kebab-case" }
         ]
       }
     },

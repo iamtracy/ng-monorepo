@@ -10,7 +10,6 @@ export default function (schema: any): Rule {
   return chain([
     externalSchematic('@schematics/angular', 'module', {
       project: 'ui-components',
-
       name: schema.name,
     }),
     externalSchematic('@ngneat/spectator', 'spectator-component', {
@@ -28,7 +27,7 @@ export default function (schema: any): Rule {
     }),
     externalSchematic('@nrwl/angular', 'component-story', {
       project: 'ui-components',
-      componentName: `${capitalizeFirstLetter(schema.name)}Component`,
+      componentName: `${capitalizeFirstLetter(schema.name)}`,
       libPath: path.join('libs', 'ui', 'components', 'src'),
       componentPath: path.join('lib', schema.name),
       componentFileName: `${schema.name}.component`,
