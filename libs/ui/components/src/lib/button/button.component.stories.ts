@@ -1,46 +1,46 @@
 import { Story } from '@storybook/angular/types-6-0';
-import { ButtonComponent, ButtonTheme } from './button.component'
+import { ButtonComponent, ButtonColor } from './button.component'
 import { ButtonModule } from './button.module'
 
 export default {
-  title: 'ButtonComponent',
+  title: 'Button'
 }
 
-const deps ={
+const storyDeps ={
   component: ButtonComponent,
   moduleMetadata: {
     imports: [ButtonModule]
   }
 }
 
-export const Primary: Story<any> = () => ({
-  ...deps,
+export const Primary: Story = () => ({
+  ...storyDeps,
   props: {
-    text: 'Primary',
-    color: ButtonTheme.Primary
+    color: ButtonColor.Primary,
+    text: 'Primary'
   }
 })
 
-export const Accent: Story<any> = () => ({
-  ...deps,
+export const Accent: Story = () => ({
+  ...storyDeps,
   props: {
-    text: 'Accent',
-    color: ButtonTheme.Accent
+    color: ButtonColor.Accent,
+    text: 'Accent'
   }
 })
 
-export const Warn: Story<any> = () => ({
-  ...deps,
+export const Warn: Story = () => ({
+  ...storyDeps,
   props: {
-    text: 'Warn',
-    color: ButtonTheme.Warn
+    color: ButtonColor.Warn,
+    text: 'Warn'
   }
 })
 
-export const Disabled: Story<any> = () => ({
-  ...deps,
+export const Disabled: Story = () => ({
+  ...storyDeps,
   props: {
-    text: 'Disabled',
-    disabled: true
+    disabled: true,
+    text: 'Disabled'
   }
 })

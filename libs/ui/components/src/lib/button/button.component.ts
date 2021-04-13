@@ -1,14 +1,14 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
 
-export enum ButtonTheme {
+export enum ButtonColor {
   Accent = 'accent',
   Primary = 'primary',
-  Warn = 'warn',
+  Warn = 'warn'
 }
 
 export enum Type {
   Button = 'button',
-  Submit = 'submit',
+  Submit = 'submit'
 }
 
 @Component({
@@ -21,8 +21,8 @@ export enum Type {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
-  @Input() type: Type = Type.Button
-  @Input() text = 'Click'
-  @Input() color: ButtonTheme = ButtonTheme.Primary
+  @Input() color: ButtonColor = ButtonColor.Primary
   @Input() disabled = false
+  @Input() text = 'Click'
+  @Input() type: Type = Type.Button
 }

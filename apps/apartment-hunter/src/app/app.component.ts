@@ -1,4 +1,4 @@
-import { ButtonTheme } from '@ng-monorepo/ui/components'
+import { ButtonColor } from '@ng-monorepo/ui/components'
 import { Component } from '@angular/core'
 
 @Component({
@@ -7,7 +7,7 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  buttonTheme = ButtonTheme
+  buttonTheme = ButtonColor
 
   handleAdd() {
     console.log('add')
