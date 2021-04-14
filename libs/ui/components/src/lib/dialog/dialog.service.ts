@@ -5,7 +5,7 @@ import type { Observable } from 'rxjs'
 import { DialogComponent, DialogOnClose, IDialogComponent } from './dialog.component'
 
 @Injectable()
-export class ConfirmDialogService {
+export class DialogService {
   dialogRef: MatDialogRef<DialogComponent>
 
   constructor(private dialog: MatDialog) {}

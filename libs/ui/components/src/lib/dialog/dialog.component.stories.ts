@@ -8,9 +8,9 @@ import {
 } from '@angular/material/dialog'
 
 import { ButtonModule } from './../button/button.module'
-import { ConfirmDialogService } from './dialog.service'
 import { DialogModule } from './dialog.module'
 import { DialogOnClose } from './dialog.component'
+import { DialogService } from './dialog.service'
 
 export default {
   title: 'Dialog',
@@ -25,7 +25,7 @@ export default {
   ></ui-button>`,
 })
 class ConfirmTestComponent {
-  constructor(private dialogService: ConfirmDialogService) {}
+  constructor(private dialogService: DialogService) {}
 
   handleClick() {
     this.dialogService.open({
@@ -58,7 +58,7 @@ export const Default = () => ({
       MatDialogModule,
     ],
     providers: [
-      ConfirmDialogService,
+      DialogService,
       {
         provide: MAT_DIALOG_DEFAULT_OPTIONS,
         useValue: { hasBackdrop: true, maxWidth: '1200px' },
