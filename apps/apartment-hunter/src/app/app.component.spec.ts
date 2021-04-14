@@ -1,31 +1,15 @@
-import { TestBed } from '@angular/core/testing'
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { AppComponent } from './app.component'
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }).compileComponents()
+  let spectator: Spectator<AppComponent>
+  const createComponent = createComponentFactory({
+    component: AppComponent,
+    shallow: true,
   })
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.componentInstance
-    expect(app).toBeTruthy()
-  })
-
-  it(`should have as title 'apartment-hunter'`, () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.componentInstance
-    expect(app.title).toEqual('apartment-hunter')
-  })
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    fixture.detectChanges()
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to apartment-hunter!'
-    )
+  it('should create', () => {
+    spectator = createComponent()
+    expect(spectator.component).toBeDefined()
   })
 })

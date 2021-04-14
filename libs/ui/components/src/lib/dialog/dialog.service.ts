@@ -20,7 +20,7 @@ export class ConfirmDialogService {
     })
   }
 
-  confirmed(): Observable<DialogOnClose> {
+  confirmed(): Observable<DialogOnClose | undefined> {
     return this.dialogRef.afterClosed()
   }
 }

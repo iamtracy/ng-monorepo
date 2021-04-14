@@ -6,10 +6,10 @@ export default {
 }
 
 export const primary = () => ({
+  component: CardComponent,
   moduleMetadata: {
     imports: [MatCardModule],
   },
-  component: CardComponent,
   props: {
     title: 'Artisan synth kitsch',
     subtitle: 'vegan hoodie',

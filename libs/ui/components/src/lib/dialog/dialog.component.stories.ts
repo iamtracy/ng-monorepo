@@ -41,7 +41,7 @@ class ConfirmTestComponent {
 
     this.dialogService
       .confirmed()
-      .subscribe((value: DialogOnClose | undefined) => {
+      .subscribe(value => {
         value === DialogOnClose.Confirmed
           ? console.log('confirmed', value)
           : console.log('cancelled', value)

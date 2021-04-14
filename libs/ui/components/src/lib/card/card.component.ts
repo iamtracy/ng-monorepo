@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
   selector: 'ui-card',
   template: `
     <mat-card>
-      <mat-card-header class="ui-card-header-text">
+      <mat-card-header>
         <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
         <mat-card-subtitle *ngIf="subtitle">{{ subtitle }}</mat-card-subtitle>
       </mat-card-header>

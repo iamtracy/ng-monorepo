@@ -25,6 +25,6 @@ describe('CardComponent', () => {
     spectator = createComponent()
     expect(spectator.query('mat-card-title')).toBeNull()
     expect(spectator.query('mat-card-subtitle')).toBeNull()
-    expect(spectator.query('mat-card-content p')).toBeNull()
+    expect(spectator.query('mat-card-content')).toBeNull()
   })
 })
