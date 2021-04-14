@@ -28,9 +28,7 @@ describe('DialogComponent', () => {
     expect(spectator.query('.mat-dialog-title').innerHTML).toBe('Foo')
     expect(spectator.query('.mat-dialog-content p').innerHTML).toBe('Bar')
 
-    const [confirmButton, cancelButton] = spectator.queryAll(
-      'ui-button'
-    )
+    const [confirmButton, cancelButton] = spectator.queryAll('ui-button')
     expect(confirmButton.innerHTML).toContain('Submit')
     expect(cancelButton.innerHTML).toContain('Cancel')
   })

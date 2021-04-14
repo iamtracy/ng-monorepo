@@ -11,7 +11,7 @@ describe('CardComponent', () => {
     shallow: true,
   })
 
-  it('should create', () => {
+  it('should create card with title, subtitle, and content', () => {
     spectator = createComponent({
       props: {
         content: 'Baz',
@@ -19,11 +19,15 @@ describe('CardComponent', () => {
         title: 'Foo',
       },
     })
+
     expect(spectator.query('mat-card-title').innerHTML.trim()).toBe('Foo')
     expect(spectator.query('mat-card-subtitle').innerHTML.trim()).toBe('Biz')
     expect(spectator.query('mat-card-content p').innerHTML.trim()).toBe('Baz')
+  })
 
+  it('should create empty card', () => {
     spectator = createComponent()
+
     expect(spectator.query('mat-card-title')).toBeNull()
     expect(spectator.query('mat-card-subtitle')).toBeNull()
     expect(spectator.query('mat-card-content')).toBeNull()

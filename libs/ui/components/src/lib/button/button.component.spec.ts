@@ -18,6 +18,7 @@ describe('ButtonComponent', () => {
         type: Type.Submit,
       },
     })
+
     expect(spectator.query('.mat-button-wrapper').innerHTML.trim()).toBe('Foo')
     expect(spectator.query('button').getAttribute('type')).toBe(Type.Submit)
   })
@@ -28,6 +29,7 @@ describe('ButtonComponent', () => {
         color: ButtonColor.Primary,
       },
     })
+
     expect(
       spectator.query('button').classList.contains('mat-primary')
     ).toBeTruthy()
@@ -39,6 +41,7 @@ describe('ButtonComponent', () => {
         color: ButtonColor.Accent,
       },
     })
+
     expect(
       spectator.query('button').classList.contains('mat-accent')
     ).toBeTruthy()
@@ -50,6 +53,7 @@ describe('ButtonComponent', () => {
         color: ButtonColor.Warn,
       },
     })
+
     expect(
       spectator.query('button').classList.contains('mat-warn')
     ).toBeTruthy()
@@ -61,6 +65,7 @@ describe('ButtonComponent', () => {
         disabled: true,
       },
     })
+
     expect(spectator.query('button').getAttribute('disabled')).toBe('true')
   })
 })

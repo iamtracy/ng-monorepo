@@ -11,6 +11,7 @@ describe('AppComponent', () => {
 
   it('should create', () => {
     spectator = createComponent()
+
     expect(spectator.component).toBeDefined()
   })
 })

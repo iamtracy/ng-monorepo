@@ -1,6 +1,9 @@
-import { ChangeDetectionStrategy } from '@angular/core';
 import { externalSchematic, chain, Rule } from '@angular-devkit/schematics'
 import { join } from 'path'
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
 
 export default function (schema: any): Rule {
   return chain([
@@ -9,7 +12,7 @@ export default function (schema: any): Rule {
       project: 'ui-components',
     }),
     externalSchematic('@ngneat/spectator', 'spectator-component', {
-      changeDetection: ChangeDetectionStrategy.OnPush,
+      changeDetection: 'OnPush',
       export: true,
       inlineStyle: true,
       inlineTemplate: true,
@@ -22,6 +25,7 @@ export default function (schema: any): Rule {
     }),
     externalSchematic('@nrwl/angular', 'component-story', {
       componentFileName: `${schema.name}.component`,
+      componentName: `${capitalizeFirstLetter(schema.name)}`,
       componentPath: join('lib', schema.name),
       libPath: join('libs', 'ui', 'components', 'src'),
       project: 'ui-components',

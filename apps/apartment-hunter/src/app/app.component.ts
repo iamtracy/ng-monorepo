@@ -5,17 +5,17 @@ import { Component } from '@angular/core'
   selector: 'ui-root',
   template: `
     <ui-card
-      title="Title"
-      subtitle="Subtitle"
       content="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+      subtitle="Subtitle"
+      title="Title"
     >
       <ui-button
-        (click)="handleAdd()"
+        (click)="handleAdd($event)"
         [color]="buttonTheme.Primary"
         text="Add"
       ></ui-button>
       <ui-button
-        (click)="handleDelete()"
+        (click)="handleDelete($event)"
         [color]="buttonTheme.Warn"
         text="Delete"
       ></ui-button>
@@ -25,11 +25,11 @@ import { Component } from '@angular/core'
 export class AppComponent {
   buttonTheme = ButtonColor
 
-  handleAdd() {
-    console.log('add')
+  handleAdd(event) {
+    console.log('add', event)
   }
 
-  handleDelete() {
-    console.log('delete')
+  handleDelete(event) {
+    console.log('delete', event)
   }
 }
