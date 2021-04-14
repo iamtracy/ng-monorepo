@@ -3,14 +3,14 @@ module.exports = {
   displayName: 'apartment-hunter',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.spec.json',
-      stringifyContentPathRegex: '\\.(html|svg)$',
       astTransformers: {
         before: [
           'jest-preset-angular/build/InlineFilesTransformer',
           'jest-preset-angular/build/StripStylesTransformer',
         ],
       },
+      stringifyContentPathRegex: '\\.(html|svg)$',
+      tsConfig: '<rootDir>/tsconfig.spec.json',
     },
   },
   preset: '../../jest.preset.js',

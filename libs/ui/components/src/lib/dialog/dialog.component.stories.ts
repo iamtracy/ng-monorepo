@@ -1,6 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { DialogModule } from './dialog.module'
 import {
   MAT_DIALOG_DATA,
   MAT_DIALOG_DEFAULT_OPTIONS,
@@ -10,6 +9,7 @@ import {
 
 import { ButtonModule } from './../button/button.module'
 import { ConfirmDialogService } from './dialog.service'
+import { DialogModule } from './dialog.module'
 import { DialogOnClose } from './dialog.component'
 
 export default {
@@ -40,18 +40,17 @@ class ConfirmTestComponent {
       title: 'Distillery intelligentsia',
     })
 
-    this.dialogService
-      .confirmed()
-      .subscribe(value => {
-        value === DialogOnClose.Confirmed
-          ? console.log('confirmed', value)
-          : console.log('cancelled', value)
-      })
+    this.dialogService.confirmed().subscribe((value) => {
+      value === DialogOnClose.Confirmed
+        ? console.log('confirmed', value)
+        : console.log('cancelled', value)
+    })
   }
 }
 
 export const Default = () => ({
   moduleMetadata: {
+    component: ConfirmTestComponent,
     imports: [
       BrowserAnimationsModule,
       ButtonModule,
@@ -74,5 +73,4 @@ export const Default = () => ({
       },
     ],
   },
-  component: ConfirmTestComponent,
 })
