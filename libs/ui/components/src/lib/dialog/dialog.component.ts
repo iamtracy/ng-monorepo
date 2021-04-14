@@ -1,5 +1,5 @@
 import { ButtonColor } from '@ng-monorepo/ui/components'
-import { Component, ChangeDetectionStrategy, Inject } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 export enum DialogOnClose {
@@ -7,8 +7,27 @@ export enum DialogOnClose {
   Cancelled,
 }
 
+export interface IDialogComponent {
+  cancelText?: string
+  confirmText?: string
+  message: string
+  title: string
+}
+
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-dialog',
+  styles: [
+    `
+      :host ::ng-deep mat-dialog-actions {
+        margin-top: 1.5rem;
+        display: block;
+      }
+      :host ::ng-deep ui-button {
+        margin-right: 1rem;
+      }
+    `,
+  ],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
     <div mat-dialog-content>
@@ -26,18 +45,6 @@ export enum DialogOnClose {
       ></ui-button>
     </div>
   `,
-  styles: [
-    `
-      :host ::ng-deep mat-dialog-actions {
-        margin-top: 1.5rem;
-        display: block;
-      }
-      :host ::ng-deep ui-button {
-        margin-right: 1rem;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogComponent {
   buttonColor = ButtonColor

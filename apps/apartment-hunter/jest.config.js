@@ -1,7 +1,6 @@
 module.exports = {
+  coverageDirectory: '../../coverage/apps/apartment-hunter',
   displayName: 'apartment-hunter',
-  preset: '../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -14,7 +13,8 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../coverage/apps/apartment-hunter',
+  preset: '../../jest.preset.js',
+  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

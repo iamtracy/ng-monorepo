@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 export enum ButtonColor {
   Accent = 'accent',
@@ -12,6 +12,7 @@ export enum Type {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-button',
   template: `
     <button
@@ -23,7 +24,6 @@ export enum Type {
       {{ text }}
     </button>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input() color: ButtonColor = ButtonColor.Primary

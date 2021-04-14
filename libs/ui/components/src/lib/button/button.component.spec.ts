@@ -1,4 +1,5 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
+
 import { ButtonColor, ButtonComponent, Type } from './button.component'
 import { ButtonModule } from './button.module'
 

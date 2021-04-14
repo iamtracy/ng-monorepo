@@ -1,7 +1,19 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-card',
+  styles: [
+    `
+      :host ::ng-deep .mat-card-header-text {
+        margin-left: 0;
+      }
+
+      :host ::ng-deep ui-button {
+        margin-right: 1rem;
+      }
+    `,
+  ],
   template: `
     <mat-card>
       <mat-card-header>
@@ -16,21 +28,9 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
       </mat-card-actions>
     </mat-card>
   `,
-  styles: [
-    `
-      :host ::ng-deep .mat-card-header-text {
-        margin-left: 0;
-      }
-
-      :host ::ng-deep ui-button {
-        margin-right: 1rem;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-  @Input() title: string
-  @Input() subtitle: string
   @Input() content: string
+  @Input() subtitle: string
+  @Input() title: string
 }

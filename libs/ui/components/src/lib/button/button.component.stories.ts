@@ -1,5 +1,6 @@
 import { Story } from '@storybook/angular/types-6-0'
-import { ButtonComponent, ButtonColor } from './button.component'
+
+import { ButtonColor, ButtonComponent } from './button.component'
 import { ButtonModule } from './button.module'
 
 export default {

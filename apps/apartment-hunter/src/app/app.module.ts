@@ -1,15 +1,15 @@
-import { CardModule } from './../../../../libs/ui/components/src/lib/card/card.module'
-import { ButtonModule } from './../../../../libs/ui/components/src/lib/button/button.module'
-import { NgModule } from '@angular/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+
+import { ButtonModule } from '@ng-monorepo/ui/components'
+import { CardModule } from '@ng-monorepo/ui/components'
 
 import { AppComponent } from './app.component'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [BrowserModule, BrowserAnimationsModule, CardModule, ButtonModule],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

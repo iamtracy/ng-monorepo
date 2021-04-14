@@ -9,28 +9,28 @@ function capitalizeFirstLetter(string) {
 export default function (schema: any): Rule {
   return chain([
     externalSchematic('@schematics/angular', 'module', {
-      project: 'ui-components',
       name: schema.name,
+      project: 'ui-components',
     }),
     externalSchematic('@ngneat/spectator', 'spectator-component', {
-      project: 'ui-components',
-      name: schema.name,
-      module: schema.name,
+      changeDetection: 'OnPush',
       export: true,
-      prefix: 'ui',
-      style: 'scss',
       inlineStyle: true,
       inlineTemplate: true,
-      changeDetection: 'OnPush',
-      template: `foo`,
+      module: schema.name,
+      name: schema.name,
       path: path.join('libs', 'ui', 'components', 'src', 'lib'),
+      prefix: 'ui',
+      project: 'ui-components',
+      style: 'scss',
+      template: `foo`,
     }),
     externalSchematic('@nrwl/angular', 'component-story', {
-      project: 'ui-components',
-      componentName: `${capitalizeFirstLetter(schema.name)}`,
-      libPath: path.join('libs', 'ui', 'components', 'src'),
-      componentPath: path.join('lib', schema.name),
       componentFileName: `${schema.name}.component`,
+      componentName: `${capitalizeFirstLetter(schema.name)}`,
+      componentPath: path.join('lib', schema.name),
+      libPath: path.join('libs', 'ui', 'components', 'src'),
+      project: 'ui-components',
     }),
   ])
 }

@@ -50,7 +50,7 @@
               "apps/apartment-hunter/src/favicon.ico",
               "apps/apartment-hunter/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/apartment-hunter/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"],
             "scripts": []
           },
           "configurations": {

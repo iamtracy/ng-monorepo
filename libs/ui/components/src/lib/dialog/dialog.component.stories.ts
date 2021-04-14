@@ -1,34 +1,34 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { Component, ChangeDetectionStrategy } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { DialogModule } from './dialog.module'
 import {
-  MatDialogModule,
-  MatDialogRef,
   MAT_DIALOG_DATA,
   MAT_DIALOG_DEFAULT_OPTIONS,
+  MatDialogModule,
+  MatDialogRef,
 } from '@angular/material/dialog'
+
 import { ButtonModule } from './../button/button.module'
-import { DialogOnClose } from './dialog.component'
 import { ConfirmDialogService } from './dialog.service'
+import { DialogOnClose } from './dialog.component'
 
 export default {
   title: 'Dialog',
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-dialog-test',
   template: `<ui-button
     (click)="handleClick()"
     text="Open Confirm Dialog"
   ></ui-button>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfirmTestComponent {
   constructor(private dialogService: ConfirmDialogService) {}
 
   handleClick() {
     this.dialogService.open({
-      title: 'Distillery intelligentsia',
       message: `
         Blue bottle master cleanse man bun art party, chartreuse hot chicken twee subway tile direct trade literally.
         Activated charcoal ethical poke gochujang. Bitters godard sriracha bushwick succulents.
@@ -37,6 +37,7 @@ class ConfirmTestComponent {
         Kombucha yuccie readymade, umami semiotics taxidermy man braid pinterest trust fund pok pok authentic pitchfork.
         Tousled tilde meh, cred swag man braid truffaut prism stumptown occupy four loko portland wayfarers.
       `,
+      title: 'Distillery intelligentsia',
     })
 
     this.dialogService
@@ -52,10 +53,10 @@ class ConfirmTestComponent {
 export const Default = () => ({
   moduleMetadata: {
     imports: [
-      MatDialogModule,
       BrowserAnimationsModule,
-      DialogModule,
       ButtonModule,
+      DialogModule,
+      MatDialogModule,
     ],
     providers: [
       ConfirmDialogService,

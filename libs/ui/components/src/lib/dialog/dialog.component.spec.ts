@@ -1,7 +1,8 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator'
-import { DialogModule } from './dialog.module'
-import { DialogComponent } from './dialog.component'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Spectator, createComponentFactory } from '@ngneat/spectator'
+
+import { DialogComponent } from './dialog.component'
+import { DialogModule } from './dialog.module'
 
 describe('DialogComponent', () => {
   let spectator: Spectator<DialogComponent>
@@ -17,8 +18,8 @@ describe('DialogComponent', () => {
         {
           provide: MAT_DIALOG_DATA,
           useValue: {
-            title: 'Foo',
             message: 'Bar',
+            title: 'Foo',
           },
         },
       ],
