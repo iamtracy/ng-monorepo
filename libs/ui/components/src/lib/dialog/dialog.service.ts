@@ -5,8 +5,8 @@ import type { Observable } from 'rxjs'
 import { DialogComponent, IDialogComponent } from './dialog.component'
 
 @Injectable()
-export class DialogService<T> {
-  dialogRef: MatDialogRef<DialogComponent, T>
+export class DialogService {
+  dialogRef: MatDialogRef<DialogComponent>
 
   constructor(private dialog: MatDialog) {}
 
@@ -28,7 +28,7 @@ export class DialogService<T> {
     })
   }
 
-  confirmed(): Observable<T> {
+  confirmed<T>(): Observable<T> {
     return this.dialogRef.afterClosed()
   }
 }

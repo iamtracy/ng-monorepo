@@ -63,7 +63,6 @@ export interface IDialogComponent {
 export class DialogComponent {
   buttonColor = ButtonColor
   buttonType = ButtonType
-  value
 
   constructor(
     @Inject(MAT_DIALOG_DATA)

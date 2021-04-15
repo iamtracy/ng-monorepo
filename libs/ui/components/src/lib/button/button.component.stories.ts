@@ -45,3 +45,10 @@ export const Disabled: Story<ButtonComponent> = () => ({
     text: 'Disabled',
   },
 })
+
+export const Link: Story<ButtonComponent> = () => ({
+  ...storyDeps,
+  props: {
+    href: '//youtube.com/watch?v=oHg5SJYRHA0',
+  },
+})

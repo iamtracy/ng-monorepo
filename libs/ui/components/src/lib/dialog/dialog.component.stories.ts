@@ -1,19 +1,18 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import {
-  MAT_DIALOG_DATA,
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialogModule,
-  MatDialogRef,
-} from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { ButtonModule } from './../button/button.module'
 import { DialogModule } from './dialog.module'
 import { DialogService } from './dialog.service'
-import { IDialogComponent } from './dialog.component'
+import { FormFieldGroup } from '../form/utilities/form-field-group'
 
 export default {
   title: 'Dialog',
+}
+
+interface Foo {
+  bar: string
 }
 
 @Component({
@@ -25,7 +24,7 @@ export default {
   ></ui-button>`,
 })
 class ConfirmTestComponent {
-  constructor(private dialogService: DialogService<IDialogComponent>) {}
+  constructor(private dialogService: DialogService) {}
 
   handleClick() {
     this.dialogService.open({
@@ -40,15 +39,15 @@ class ConfirmTestComponent {
       title: 'Distillery intelligentsia',
     })
 
-    this.dialogService.confirmed().subscribe((value) => {
+    this.dialogService.confirmed<Foo>().subscribe((value) => {
       value === null
-        ? console.log('cancelled', value)
+        ? console.log('cancelled', value.bar)
         : console.log('confirmed', value)
     })
   }
 }
 
-export const Default = () => ({
+export const Confirm = () => ({
   component: ConfirmTestComponent,
   moduleMetadata: {
     imports: [
@@ -57,21 +56,7 @@ export const Default = () => ({
       DialogModule,
       MatDialogModule,
     ],
-    providers: [
-      DialogService,
-      {
-        provide: MAT_DIALOG_DEFAULT_OPTIONS,
-        useValue: { hasBackdrop: true, maxWidth: '1200px' },
-      },
-      {
-        provide: MatDialogRef,
-        useValue: {},
-      },
-      {
-        provide: MAT_DIALOG_DATA,
-        useValue: {},
-      },
-    ],
+    providers: [DialogService],
   },
 })
 
@@ -84,41 +69,39 @@ export const Default = () => ({
   ></ui-button>`,
 })
 class FormTestComponent {
-  constructor(private dialogService: DialogService<IDialogComponent>) {}
+  constructor(private dialogService: DialogService) {}
 
   handleClick() {
     this.dialogService.open({
       fields: [
-        {
-          fieldGroup: [
-            {
-              className: 'flex-1',
-              defaultValue: 'Ace',
-              key: 'firstName',
-              templateOptions: {
-                label: 'First Name',
-                required: true,
-              },
-              type: 'input',
-            },
-            {
-              className: 'flex-1',
-              defaultValue: 'Ventura',
-              expressionProperties: {
-                'templateOptions.disabled': '!model.firstName',
-              },
-              key: 'lastName',
-              templateOptions: {
-                label: 'Last Name',
-                required: true,
-              },
-              type: 'input',
-            },
-          ],
-          fieldGroupClassName: 'display-flex',
-        },
+        FormFieldGroup([
+          {
+            flexWidth: 'flex-1',
+            initialValue: null,
+            key: 'firstName',
+            label: 'First Name',
+            required: true,
+            type: 'input',
+          },
+          {
+            flexWidth: 'flex-1',
+            initialValue: 'Ventura',
+            key: 'lastName',
+            label: 'Last Name',
+            required: true,
+            type: 'input',
+          },
+        ]),
+        FormFieldGroup([
+          {
+            flexWidth: 'flex-1',
+            key: 'nickName',
+            label: 'Nick Name',
+            type: 'input',
+          },
+        ]),
       ],
-      title: 'Profile Information',
+      title: 'Ave Ventura',
     })
 
     this.dialogService.confirmed().subscribe((value) => {
@@ -127,7 +110,7 @@ class FormTestComponent {
   }
 }
 
-export const FormDialog = () => ({
+export const Form = () => ({
   component: FormTestComponent,
   moduleMetadata: {
     imports: [
@@ -136,20 +119,6 @@ export const FormDialog = () => ({
       DialogModule,
       MatDialogModule,
     ],
-    providers: [
-      DialogService,
-      {
-        provide: MAT_DIALOG_DEFAULT_OPTIONS,
-        useValue: { hasBackdrop: true, maxWidth: '1200px' },
-      },
-      {
-        provide: MatDialogRef,
-        useValue: {},
-      },
-      {
-        provide: MAT_DIALOG_DATA,
-        useValue: {},
-      },
-    ],
+    providers: [DialogService],
   },
 })
