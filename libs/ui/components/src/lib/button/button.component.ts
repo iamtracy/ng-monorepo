@@ -6,8 +6,9 @@ export enum ButtonColor {
   Warn = 'warn',
 }
 
-export enum Type {
+export enum ButtonType {
   Button = 'button',
+  Reset = 'reset',
   Submit = 'submit',
 }
 
@@ -15,19 +16,24 @@ export enum Type {
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-button',
   template: `
-    <button
-      mat-raised-button
-      [disabled]="disabled"
-      [type]="type"
-      [color]="color"
-    >
-      {{ text }}
-    </button>
+    <ng-container>
+      <button
+        *ngIf="!href"
+        mat-flat-button
+        [disabled]="disabled"
+        [type]="type"
+        [color]="color"
+      >
+        {{ text }}
+      </button>
+    </ng-container>
+    <a *ngIf="href" mat-flat-button [href]="href" target="_blank">{{ text }}</a>
   `,
 })
 export class ButtonComponent {
   @Input() color: ButtonColor = ButtonColor.Primary
   @Input() disabled = false
   @Input() text = 'Click'
-  @Input() type: Type = Type.Button
+  @Input() type: ButtonType = ButtonType.Button
+  @Input() href: string
 }

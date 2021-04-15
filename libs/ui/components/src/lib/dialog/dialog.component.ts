@@ -1,17 +1,16 @@
-import { ButtonColor } from '@ng-monorepo/ui/components'
+import { ButtonType } from './../button/button.component'
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
-import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { FormlyFieldConfig } from '@ngx-formly/core'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
-export enum DialogOnClose {
-  Confirmed,
-  Cancelled,
-}
+import { ButtonColor } from '@ng-monorepo/ui/components'
 
 export interface IDialogComponent {
+  fields?: Array<FormlyFieldConfig>
+  title: string
   cancelText?: string
   confirmText?: string
-  message: string
-  title: string
+  message?: string
 }
 
 @Component({
@@ -30,16 +29,31 @@ export interface IDialogComponent {
   ],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
-    <div mat-dialog-content>
+    <div mat-dialog-content *ngIf="data.message">
       <p>{{ data.message }}</p>
     </div>
-    <div mat-dialog-actions>
+    <div mat-dialog-content *ngIf="data.fields">
+      <ui-form (submitEvent)="handleFormSubmit($event)" [fields]="data.fields">
+        <ui-button text="Submit" [type]="buttonType.Submit"></ui-button>
+        <ui-button
+          [color]="buttonColor.Warn"
+          [type]="buttonType.Reset"
+          text="Reset"
+        ></ui-button>
+        <ui-button
+          [color]="buttonColor.Accent"
+          [mat-dialog-close]="false"
+          text="Close"
+        ></ui-button>
+      </ui-form>
+    </div>
+    <div mat-dialog-actions *ngIf="!data.fields">
       <ui-button
-        [mat-dialog-close]="dialogOnClose.Confirmed"
+        [mat-dialog-close]="false"
         [text]="data.confirmText || 'Submit'"
       ></ui-button>
       <ui-button
-        [mat-dialog-close]="dialogOnClose.Cancelled"
+        [mat-dialog-close]="false"
         [color]="buttonColor.Warn"
         [text]="data.cancelText || 'Cancel'"
       ></ui-button>
@@ -48,15 +62,22 @@ export interface IDialogComponent {
 })
 export class DialogComponent {
   buttonColor = ButtonColor
-  dialogOnClose = DialogOnClose
+  buttonType = ButtonType
+  value
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
       cancelText: string
       confirmText: string
+      fields: Array<FormlyFieldConfig>
       message: string
       title: string
-    }
+    },
+    private dialogRef: MatDialogRef<DialogComponent>
   ) {}
+
+  handleFormSubmit(event: unknown) {
+    this.dialogRef.close(event)
+  }
 }

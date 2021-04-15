@@ -5,15 +5,14 @@ import { DialogService } from './dialog.service'
 import { MatDialogRef } from '@angular/material/dialog'
 
 describe('DialogService', () => {
-  let spectator: SpectatorService<DialogService>
+  let spectator: SpectatorService<DialogService<unknown>>
   const createService = createServiceFactory({
     imports: [DialogModule],
     service: DialogService,
   })
 
-  beforeEach(() => (spectator = createService()))
-
   it('should open and close a dialog', () => {
+    spectator = createService()
     spectator.service.open({ message: 'Foo', title: 'Bar' })
     expect(spectator.service.dialogRef).toBeInstanceOf(MatDialogRef)
 

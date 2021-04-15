@@ -9,8 +9,8 @@ import {
 
 import { ButtonModule } from './../button/button.module'
 import { DialogModule } from './dialog.module'
-import { DialogOnClose } from './dialog.component'
 import { DialogService } from './dialog.service'
+import { IDialogComponent } from './dialog.component'
 
 export default {
   title: 'Dialog',
@@ -18,14 +18,14 @@ export default {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'ui-dialog-test',
+  selector: 'ui-dialog-confirm',
   template: `<ui-button
     (click)="handleClick()"
     text="Open Confirm Dialog"
   ></ui-button>`,
 })
 class ConfirmTestComponent {
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService<IDialogComponent>) {}
 
   handleClick() {
     this.dialogService.open({
@@ -41,16 +41,95 @@ class ConfirmTestComponent {
     })
 
     this.dialogService.confirmed().subscribe((value) => {
-      value === DialogOnClose.Confirmed
-        ? console.log('confirmed', value)
-        : console.log('cancelled', value)
+      value === null
+        ? console.log('cancelled', value)
+        : console.log('confirmed', value)
     })
   }
 }
 
 export const Default = () => ({
+  component: ConfirmTestComponent,
   moduleMetadata: {
-    component: ConfirmTestComponent,
+    imports: [
+      BrowserAnimationsModule,
+      ButtonModule,
+      DialogModule,
+      MatDialogModule,
+    ],
+    providers: [
+      DialogService,
+      {
+        provide: MAT_DIALOG_DEFAULT_OPTIONS,
+        useValue: { hasBackdrop: true, maxWidth: '1200px' },
+      },
+      {
+        provide: MatDialogRef,
+        useValue: {},
+      },
+      {
+        provide: MAT_DIALOG_DATA,
+        useValue: {},
+      },
+    ],
+  },
+})
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'ui-dialog-test',
+  template: `<ui-button
+    (click)="handleClick()"
+    text="Open Form Dialog"
+  ></ui-button>`,
+})
+class FormTestComponent {
+  constructor(private dialogService: DialogService<IDialogComponent>) {}
+
+  handleClick() {
+    this.dialogService.open({
+      fields: [
+        {
+          fieldGroup: [
+            {
+              className: 'flex-1',
+              defaultValue: 'Ace',
+              key: 'firstName',
+              templateOptions: {
+                label: 'First Name',
+                required: true,
+              },
+              type: 'input',
+            },
+            {
+              className: 'flex-1',
+              defaultValue: 'Ventura',
+              expressionProperties: {
+                'templateOptions.disabled': '!model.firstName',
+              },
+              key: 'lastName',
+              templateOptions: {
+                label: 'Last Name',
+                required: true,
+              },
+              type: 'input',
+            },
+          ],
+          fieldGroupClassName: 'display-flex',
+        },
+      ],
+      title: 'Profile Information',
+    })
+
+    this.dialogService.confirmed().subscribe((value) => {
+      value ? console.log('confirmed', value) : console.log('cancelled', value)
+    })
+  }
+}
+
+export const FormDialog = () => ({
+  component: FormTestComponent,
+  moduleMetadata: {
     imports: [
       BrowserAnimationsModule,
       ButtonModule,

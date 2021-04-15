@@ -2,26 +2,33 @@ import { Injectable } from '@angular/core'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import type { Observable } from 'rxjs'
 
-import { DialogComponent, DialogOnClose, IDialogComponent } from './dialog.component'
+import { DialogComponent, IDialogComponent } from './dialog.component'
 
 @Injectable()
-export class DialogService {
-  dialogRef: MatDialogRef<DialogComponent>
+export class DialogService<T> {
+  dialogRef: MatDialogRef<DialogComponent, T>
 
   constructor(private dialog: MatDialog) {}
 
-  open({ title, message, cancelText, confirmText }: IDialogComponent): void {
+  open({
+    cancelText,
+    confirmText,
+    fields,
+    message,
+    title,
+  }: IDialogComponent): void {
     this.dialogRef = this.dialog.open(DialogComponent, {
       data: {
         cancelText,
         confirmText,
+        fields,
         message,
         title,
       },
     })
   }
 
-  confirmed(): Observable<DialogOnClose | undefined> {
+  confirmed(): Observable<T> {
     return this.dialogRef.afterClosed()
   }
 }
