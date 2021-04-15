@@ -32,6 +32,17 @@ export interface IDialogComponent {
     <div mat-dialog-content *ngIf="data.message">
       <p>{{ data.message }}</p>
     </div>
+    <div mat-dialog-actions *ngIf="!data.fields">
+      <ui-button
+        [mat-dialog-close]="false"
+        [text]="data.confirmText || 'Submit'"
+      ></ui-button>
+      <ui-button
+        [mat-dialog-close]="false"
+        [color]="buttonColor.Warn"
+        [text]="data.cancelText || 'Cancel'"
+      ></ui-button>
+    </div>
     <div mat-dialog-content *ngIf="data.fields">
       <ui-form (submitEvent)="handleFormSubmit($event)" [fields]="data.fields">
         <ui-button text="Submit" [type]="buttonType.Submit"></ui-button>
@@ -46,17 +57,6 @@ export interface IDialogComponent {
           text="Close"
         ></ui-button>
       </ui-form>
-    </div>
-    <div mat-dialog-actions *ngIf="!data.fields">
-      <ui-button
-        [mat-dialog-close]="false"
-        [text]="data.confirmText || 'Submit'"
-      ></ui-button>
-      <ui-button
-        [mat-dialog-close]="false"
-        [color]="buttonColor.Warn"
-        [text]="data.cancelText || 'Cancel'"
-      ></ui-button>
     </div>
   `,
 })
