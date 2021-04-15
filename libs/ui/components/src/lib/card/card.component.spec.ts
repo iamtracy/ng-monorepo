@@ -1,13 +1,13 @@
+import { MatCardModule } from '@angular/material/card'
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
 
 import { CardComponent } from './card.component'
-import { CardModule } from './card.module'
 
 describe('CardComponent', () => {
   let spectator: Spectator<CardComponent>
   const createComponent = createComponentFactory({
     component: CardComponent,
-    imports: [CardModule],
+    imports: [MatCardModule],
     shallow: true,
   })
 

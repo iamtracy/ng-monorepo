@@ -1,13 +1,13 @@
+import { MatButtonModule } from '@angular/material/button'
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
 
-import { ButtonColor, ButtonComponent, Type } from './button.component'
-import { ButtonModule } from './button.module'
+import { ButtonColor, ButtonComponent, ButtonType } from './button.component'
 
 describe('ButtonComponent', () => {
   let spectator: Spectator<ButtonComponent>
   const createComponent = createComponentFactory({
     component: ButtonComponent,
-    imports: [ButtonModule],
+    imports: [MatButtonModule],
     shallow: true,
   })
 
@@ -15,15 +15,17 @@ describe('ButtonComponent', () => {
     spectator = createComponent({
       props: {
         text: 'Foo',
-        type: Type.Submit,
+        type: ButtonType.Submit,
       },
     })
 
     expect(spectator.query('.mat-button-wrapper').innerHTML.trim()).toBe('Foo')
-    expect(spectator.query('button').getAttribute('type')).toBe(Type.Submit)
+    expect(spectator.query('button').getAttribute('type')).toBe(
+      ButtonType.Submit
+    )
   })
 
-  it('should have primary color', () => {
+  it('should have a primary color', () => {
     spectator = createComponent({
       props: {
         color: ButtonColor.Primary,
@@ -35,7 +37,7 @@ describe('ButtonComponent', () => {
     ).toBeTruthy()
   })
 
-  it('should have accent color', () => {
+  it('should have a accent color', () => {
     spectator = createComponent({
       props: {
         color: ButtonColor.Accent,
@@ -47,7 +49,7 @@ describe('ButtonComponent', () => {
     ).toBeTruthy()
   })
 
-  it('should have warn color', () => {
+  it('should have a warn color', () => {
     spectator = createComponent({
       props: {
         color: ButtonColor.Warn,
@@ -59,7 +61,7 @@ describe('ButtonComponent', () => {
     ).toBeTruthy()
   })
 
-  it('should have disabled mode', () => {
+  it('should have a disabled mode', () => {
     spectator = createComponent({
       props: {
         disabled: true,
@@ -67,5 +69,15 @@ describe('ButtonComponent', () => {
     })
 
     expect(spectator.query('button').getAttribute('disabled')).toBe('true')
+  })
+
+  it('should have have a link', () => {
+    spectator = createComponent({
+      props: {
+        href: 'rick roll',
+      },
+    })
+
+    expect(spectator.query('a').getAttribute('href')).toBe('rick roll')
   })
 })
