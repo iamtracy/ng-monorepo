@@ -1,43 +1,47 @@
 import { FormlyFieldConfig } from '@ngx-formly/core'
-type LayoutWidthClassNames =
-  | 'flex-1'
-  | 'flex-2'
-  | 'flex-3'
-  | 'flex-3'
-  | 'flex-5'
-  | 'flex-6'
-type InputTypes =
-  | 'button'
-  | 'checkbox'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'hidden'
-  | 'input'
-  | 'image'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'search'
-  | 'submit'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week'
+
+export enum FormFieldFlexWidth {
+  One = 'flex-1',
+  Two = 'flex-2',
+  Three = 'flex-3',
+  Four = 'flex-3',
+  Five = 'flex-5',
+  Six = 'flex-6',
+}
+
+export enum FormFieldInputTypes {
+  Button = 'button',
+  Checkbox = 'checkbox',
+  Color = 'color',
+  Date = 'date',
+  DateTimeLocal = 'datetime-local',
+  Email = 'email',
+  File = 'file',
+  Hidden = 'hidden',
+  Image = 'image',
+  Input = 'input',
+  Month = 'month',
+  Number = 'number',
+  Password = 'password',
+  Radio = 'radio',
+  Range = 'range',
+  Reset = 'reset',
+  Search = 'search',
+  Submit = 'submit',
+  Telephone = 'tel',
+  Text = 'text',
+  Time = 'time',
+  Url = 'url',
+  Week = 'week',
+}
 
 export interface FormGroupOptions<T> {
-  flexWidth: LayoutWidthClassNames
+  flexWidth: FormFieldFlexWidth
   initialValue?: T
   key: string
   label?: string
   required?: boolean
-  type: InputTypes
+  type: FormFieldInputTypes
 }
 
 interface FieldGroup {

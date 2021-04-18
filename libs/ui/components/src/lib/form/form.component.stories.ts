@@ -5,7 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { ButtonModule } from '../button/button.module'
 import { FormComponent } from './form.component'
-import { FormFieldGroup } from './utilities/form-field-group'
+import {
+  FormFieldFlexWidth,
+  FormFieldGroup,
+  FormFieldInputTypes,
+} from './utilities/form-field-group'
 
 export default {
   title: 'Form',
@@ -26,28 +30,28 @@ export const Primary = () => ({
     fields: [
       FormFieldGroup([
         {
-          flexWidth: 'flex-1',
+          flexWidth: FormFieldFlexWidth.One,
           initialValue: 'Ace',
           key: 'NickName',
           label: 'Last Name',
           required: true,
-          type: 'input',
+          type: FormFieldInputTypes.Input,
         },
         {
-          flexWidth: 'flex-1',
+          flexWidth: FormFieldFlexWidth.One,
           initialValue: 'Ventura',
           key: 'lastName',
           label: 'Last Name',
           required: true,
-          type: 'input',
+          type: FormFieldInputTypes.Input,
         },
       ]),
       FormFieldGroup([
         {
-          flexWidth: 'flex-1',
+          flexWidth: FormFieldFlexWidth.One,
           key: 'nickName',
           label: 'Nick Name',
-          type: 'input',
+          type: FormFieldInputTypes.Input,
         },
       ]),
     ],

@@ -5,7 +5,7 @@ import { DialogModule } from './dialog.module'
 import { DialogService } from './dialog.service'
 
 describe('DialogService', () => {
-  let spectator: SpectatorService<DialogService>
+  let spectator: SpectatorService<DialogService<unknown>>
   const createService = createServiceFactory({
     imports: [DialogModule],
     service: DialogService,

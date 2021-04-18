@@ -8,7 +8,7 @@ import {
 } from '@angular/material/dialog'
 
 describe.only('DialogComponent', () => {
-  let spectator: Spectator<DialogComponent>
+  let spectator: Spectator<DialogComponent<unknown>>
   const createComponent = createComponentFactory({
     component: DialogComponent,
     imports: [MatDialogModule],

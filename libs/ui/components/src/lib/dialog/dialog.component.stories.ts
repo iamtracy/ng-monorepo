@@ -5,16 +5,25 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { ButtonModule } from './../button/button.module'
 import { DialogModule } from './dialog.module'
 import { DialogService } from './dialog.service'
+import {
+  FormFieldFlexWidth,
+  FormFieldInputTypes,
+} from './../form/utilities/form-field-group'
 import { FormFieldGroup } from '../form/utilities/form-field-group'
 
 export default {
   title: 'Dialog',
 }
 
-interface Foo {
-  bar: string
+const moduleMetadata = {
+  imports: [
+    BrowserAnimationsModule,
+    ButtonModule,
+    DialogModule,
+    MatDialogModule,
+  ],
+  providers: [DialogService],
 }
-
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-dialog-confirm',
@@ -24,7 +33,7 @@ interface Foo {
   ></ui-button>`,
 })
 class ConfirmTestComponent {
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService<unknown>) {}
 
   handleClick() {
     this.dialogService.open({
@@ -39,9 +48,9 @@ class ConfirmTestComponent {
       title: 'Distillery intelligentsia',
     })
 
-    this.dialogService.confirmed<Foo>().subscribe((value) => {
+    this.dialogService.confirmed().subscribe((value) => {
       value === null
-        ? console.log('cancelled', value.bar)
+        ? console.log('cancelled', value)
         : console.log('confirmed', value)
     })
   }
@@ -49,17 +58,14 @@ class ConfirmTestComponent {
 
 export const Confirm = () => ({
   component: ConfirmTestComponent,
-  moduleMetadata: {
-    imports: [
-      BrowserAnimationsModule,
-      ButtonModule,
-      DialogModule,
-      MatDialogModule,
-    ],
-    providers: [DialogService],
-  },
+  moduleMetadata,
 })
 
+interface FormValue {
+  firstName: string
+  lastName: string
+  nickName: string | null
+}
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-dialog-test',
@@ -69,35 +75,35 @@ export const Confirm = () => ({
   ></ui-button>`,
 })
 class FormTestComponent {
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService<FormValue>) {}
 
   handleClick() {
     this.dialogService.open({
       fields: [
         FormFieldGroup([
           {
-            flexWidth: 'flex-1',
+            flexWidth: FormFieldFlexWidth.One,
             initialValue: null,
             key: 'firstName',
             label: 'First Name',
             required: true,
-            type: 'input',
+            type: FormFieldInputTypes.Input,
           },
           {
-            flexWidth: 'flex-1',
+            flexWidth: FormFieldFlexWidth.One,
             initialValue: 'Ventura',
             key: 'lastName',
             label: 'Last Name',
             required: true,
-            type: 'input',
+            type: FormFieldInputTypes.Input,
           },
         ]),
         FormFieldGroup([
           {
-            flexWidth: 'flex-1',
+            flexWidth: FormFieldFlexWidth.One,
             key: 'nickName',
             label: 'Nick Name',
-            type: 'input',
+            type: FormFieldInputTypes.Input,
           },
         ]),
       ],
@@ -112,13 +118,5 @@ class FormTestComponent {
 
 export const Form = () => ({
   component: FormTestComponent,
-  moduleMetadata: {
-    imports: [
-      BrowserAnimationsModule,
-      ButtonModule,
-      DialogModule,
-      MatDialogModule,
-    ],
-    providers: [DialogService],
-  },
+  moduleMetadata,
 })

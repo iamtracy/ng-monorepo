@@ -1,5 +1,4 @@
 import { ButtonColor } from '@ng-monorepo/ui/components'
-import { ButtonType } from './../button/button.component'
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,6 +10,7 @@ import {
 import { FormGroup } from '@angular/forms'
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core'
 
+import { ButtonType } from './../button/button.component'
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
@@ -20,6 +20,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core'
       :host ::ng-deep ui-button {
         margin-right: 1rem;
       }
+
       .display-flex {
         display: flex;
       }

@@ -1,4 +1,4 @@
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule, MatSnackBarRef } from '@angular/material/snack-bar'
 import { SpectatorService, createServiceFactory } from '@ngneat/spectator'
 
 import { SnackBarService } from './snackbar.service'
@@ -12,9 +12,12 @@ describe('DialogService', () => {
 
   it('should open and close a snackbar', () => {
     spectator = createService()
-
     spectator.service.open('foo')
 
-    expect(spectator.service.snackBarRef).toBeInstanceOf(SnackBarService)
+    expect(spectator.service.snackBarRef).toBeInstanceOf(MatSnackBarRef)
+
+    spectator.service.close().subscribe(() => {
+      expect(spectator.service.snackBarRef).toBeUndefined()
+    })
   })
 })
