@@ -1,4 +1,4 @@
-import { ButtonColor } from '@ng-monorepo/ui/components'
+import { ButtonColor, SnackBarService } from '@ng-monorepo/ui/components'
 import { Component } from '@angular/core'
 
 @Component({
@@ -25,8 +25,10 @@ import { Component } from '@angular/core'
 export class AppComponent {
   buttonTheme = ButtonColor
 
+  constructor(private snackBarService: SnackBarService) {}
+
   handleAdd(event) {
-    console.log('add', event)
+    this.snackBarService.open(`${event.target.innerText} Button Clicked`)
   }
 
   handleDelete(event) {

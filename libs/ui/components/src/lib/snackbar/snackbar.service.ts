@@ -7,7 +7,9 @@ import {
 } from '@angular/material/snack-bar'
 import { Observable } from 'rxjs'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SnackBarService {
   snackBarRef: MatSnackBarRef<TextOnlySnackBar>
 
