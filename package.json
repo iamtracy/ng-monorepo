@@ -90,6 +90,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "jest": "26.2.2",
     "jest-preset-angular": "8.3.2",
+    "ng-packagr": "^11.0.0",
     "prettier": "2.2.1",
     "storybook-dark-mode": "^1.0.7",
     "ts-jest": "26.4.0",

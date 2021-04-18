@@ -12,15 +12,25 @@
             "enforceBuildableLibDependency": true,
             "allow": [],
             "depConstraints": [
-              { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "domain:listings",
+                "onlyDependOnLibsWithTags": ["domain:listings", "domain:shared"]
+              }
             ]
           }
         ],
-        "sort-imports-es6-autofix/sort-imports-es6": [2, {
-          "ignoreCase": false,
-          "ignoreMemberSort": false,
-          "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-        }],
+        "sort-imports-es6-autofix/sort-imports-es6": [
+          2,
+          {
+            "ignoreCase": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+          }
+        ],
         "sort-keys-fix/sort-keys-fix": "warn"
       }
     },

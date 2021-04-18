@@ -26,6 +26,9 @@
     "ui-components-e2e": {
       "tags": [],
       "implicitDependencies": ["ui-components"]
-    }
+    },
+    "listings-domain": { "tags": ["domain:listings", "type:domain-logic"] },
+    "listings": { "tags": ["domain:listings", "type:app"] },
+    "listings-e2e": { "tags": [], "implicitDependencies": ["listings"] }
   }
 }
