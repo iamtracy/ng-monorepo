@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@ng-monorepo/ui/components": ["libs/ui/components/src/index.ts"],
-      "@ng-monorepo/listings/domain": ["libs/listings/domain/src/index.ts"]
+      "@ng-monorepo/listings/domain": ["libs/listings/domain/src/index.ts"],
+      "@ng-monorepo/listings/feature-manage-listings": [
+        "libs/listings/feature-manage-listings/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

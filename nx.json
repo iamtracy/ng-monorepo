@@ -29,6 +29,9 @@
     },
     "listings-domain": { "tags": ["domain:listings", "type:domain-logic"] },
     "listings": { "tags": ["domain:listings", "type:app"] },
-    "listings-e2e": { "tags": [], "implicitDependencies": ["listings"] }
+    "listings-e2e": { "tags": [], "implicitDependencies": ["listings"] },
+    "listings-feature-manage-listings": {
+      "tags": ["domain:listings", "type:feature"]
+    }
   }
 }
