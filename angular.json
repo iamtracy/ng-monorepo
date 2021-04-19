@@ -118,6 +118,19 @@
             "jestConfig": "apps/apartment-hunter/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "secrets": {
+            "DOCKERHUB_USERNAME": "thatsthespirit",
+            "DOCKERHUB_TOKEN": "e109888e-eb47-4893-8618-c3be17f162ac"
+          },
+          "options": {
+            "push": true,
+            "file": "apps/apartment-hunter/Dockerfile",
+            "tags": ["thatsthespirit/ng-monorepo:latest"],
+            "platforms": ["linux/amd64"]
+          }
         }
       }
     },
@@ -349,6 +362,19 @@
           "options": {
             "jestConfig": "apps/listings/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "docker": {
+          "builder": "@nx-tools/nx-docker:build",
+          "secrets": {
+            "DOCKERHUB_USERNAME": "thatsthespirit",
+            "DOCKERHUB_TOKEN": "e109888e-eb47-4893-8618-c3be17f162ac"
+          },
+          "options": {
+            "push": true,
+            "file": "apps/listings/Dockerfile",
+            "tags": ["thatsthespirit/ng-monorepo/listings:latest"],
+            "platforms": ["linux/amd64"]
           }
         }
       }
