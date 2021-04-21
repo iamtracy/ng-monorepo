@@ -6,7 +6,7 @@ export default {
   title: 'Card',
 }
 
-export const primary = () => ({
+export const Default = () => ({
   component: CardComponent,
   moduleMetadata: {
     imports: [MatCardModule],

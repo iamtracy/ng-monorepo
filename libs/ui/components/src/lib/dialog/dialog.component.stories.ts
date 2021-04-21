@@ -38,17 +38,13 @@ class ConfirmTestComponent {
   handleClick() {
     this.dialogService.open({
       message: `
-        Blue bottle master cleanse man bun art party, chartreuse hot chicken twee subway tile direct trade literally.
-        Activated charcoal ethical poke gochujang. Bitters godard sriracha bushwick succulents.
-        Cold-pressed photo booth unicorn listicle edison bulb quinoa enamel pin direct trade yuccie fingerstache.
-        Skateboard roof party mixtape narwhal, jianbing twee master cleanse squid tofu blog blue bottle cliche bicycle rights.
         Kombucha yuccie readymade, umami semiotics taxidermy man braid pinterest trust fund pok pok authentic pitchfork.
         Tousled tilde meh, cred swag man braid truffaut prism stumptown occupy four loko portland wayfarers.
       `,
       title: 'Distillery intelligentsia',
     })
 
-    this.dialogService.confirmed().subscribe((value) => {
+    this.dialogService.afterClosed().subscribe((value) => {
       value === null
         ? console.log('cancelled', value)
         : console.log('confirmed', value)
@@ -110,7 +106,7 @@ class FormTestComponent {
       title: 'Ave Ventura',
     })
 
-    this.dialogService.confirmed().subscribe((value) => {
+    this.dialogService.afterClosed().subscribe((value) => {
       value ? console.log('confirmed', value) : console.log('cancelled', value)
     })
   }

@@ -66,6 +66,7 @@ import { ButtonType } from './../button/button.component'
   template: `
     <form [formGroup]="form" (ngSubmit)="handleSubmit()">
       <formly-form
+        (modelChange)="handleOnChange()"
         [form]="form"
         [fields]="fields"
         [model]="model"
@@ -79,6 +80,7 @@ export class FormComponent {
   @Input() model = {}
   @Input() options: FormlyFormOptions
   @Output() submitEvent = new EventEmitter<unknown>()
+  @Output() changeEvent = new EventEmitter<unknown>()
   readonly form = new FormGroup({})
   readonly buttonType = ButtonType
   readonly buttonColor = ButtonColor
@@ -87,5 +89,9 @@ export class FormComponent {
     if (this.form.valid) {
       this.submitEvent.emit(this.form.value)
     }
+  }
+
+  handleOnChange(): void {
+    this.changeEvent.emit(this.form.value)
   }
 }

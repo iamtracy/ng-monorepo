@@ -1,11 +1,11 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator'
-
-import { DialogComponent } from './dialog.component'
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog'
+import { Spectator, createComponentFactory } from '@ngneat/spectator'
+
+import { DialogComponent } from './dialog.component'
 
 describe.only('DialogComponent', () => {
   let spectator: Spectator<DialogComponent<unknown>>

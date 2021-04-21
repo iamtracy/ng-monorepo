@@ -17,7 +17,7 @@ describe('DialogService', () => {
     spectator.service.open({ message: 'Foo', title: 'Bar' })
     expect(spectator.service.dialogRef).toBeInstanceOf(MatDialogRef)
 
-    spectator.service.confirmed().subscribe(() => {
+    spectator.service.afterClosed().subscribe(() => {
       expect(spectator.service.dialogRef).toBeNull()
     })
   })

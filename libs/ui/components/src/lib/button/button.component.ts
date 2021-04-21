@@ -16,9 +16,11 @@ export enum ButtonType {
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ui-button',
   template: `
-    <ng-container>
+    <ng-container *ngIf="href; else isButton">
+      <a mat-flat-button [href]="href" target="_blank">{{ text }}</a>
+    </ng-container>
+    <ng-template #isButton>
       <button
-        *ngIf="!href"
         mat-flat-button
         [disabled]="disabled"
         [type]="type"
@@ -26,8 +28,7 @@ export enum ButtonType {
       >
         {{ text }}
       </button>
-    </ng-container>
-    <a *ngIf="href" mat-flat-button [href]="href" target="_blank">{{ text }}</a>
+    </ng-template>
   `,
 })
 export class ButtonComponent {

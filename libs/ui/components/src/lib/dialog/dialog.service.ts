@@ -28,7 +28,7 @@ export class DialogService<T> {
     })
   }
 
-  confirmed(): Observable<T> {
+  afterClosed(): Observable<T> {
     return this.dialogRef.afterClosed()
   }
 }
